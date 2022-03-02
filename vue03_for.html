@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<title>Vue</title>
+
+</head>
+<body>
+    <div id="app">
+        <!-- 배열을 이용한 반복문 
+            v-for문
+        -->
+        <h1>배열반복</h1>
+        <ol>
+            <!--<li>10</li>-->
+            <!-- 10  0 -->
+            <!-- <li v-for="(v) in arr">{{v}}</li> -->
+            <!--변수명은 임의의 변수명이다.-->
+            <li v-for="(v, i) in arr">{{v}}==> {{i}}</li>
+        </ol>
+        <h2>json데이터 반복</h2>
+        <ul>
+            <!--        value, key, index-->
+            <li v-for="(v, k, i) in countrys">{{v}}, {{k}}, ({{i}})</li>
+        </ul>
+        <ul>
+            <li v-for="sport in sportsman" v-if="sport.no<3">
+                <h2>번호 : {{sport.no}}</h2>
+                <h2>이름 : {{sport.name}}</h2>
+                <h2>종목 : {{sport.sports}}</h2>
+                <img v-bind:src="sport.img" width='200' height="200"/>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data: {
+                //배열형 데이터
+                arr : [10,20,20,"파인애플","홍길동","역삼동"],
+                //Json형 데이터
+                countrys: {
+                    city1:"서울",
+                    city2:"암스테르담",
+                    city3:"워싱턴",
+                    city4:"룩셈부르크"
+                },
+                sportsman: [
+                    {no:1, name:'손흥민', sports:'축구',img:'./img/main_01.jpg'},
+                    {no:2, name:'박태환', sports:'수영',img:'./img/main_02.jpg'},
+                    {no:3, name:'김연경', sports:'배구',img:'./img/main_03.jpg'},
+                    {no:4, name:'김연아', sports:'피겨스케이팅',img:'./img/main_01.jpg'}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
